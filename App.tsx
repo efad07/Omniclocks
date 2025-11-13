@@ -1,14 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { DigitalClock } from './components/DigitalClock';
-import { Stopwatch } from './components/Stopwatch';
-import { AlarmClock } from './components/AlarmClock';
-import { Timer } from './components/Timer';
-import { WorldClock } from './components/WorldClock';
-import { AiAssistant } from './components/AiAssistant';
-import { NAV_ITEMS } from './constants';
-import type { NavItemType } from './types';
-import { ThemeToggle } from './components/ThemeToggle';
-import { PrivacyPolicyModal } from './components/PrivacyPolicy';
+import { DigitalClock } from './components/DigitalClock.tsx';
+import { Stopwatch } from './components/Stopwatch.tsx';
+import { AlarmClock } from './components/AlarmClock.tsx';
+import { Timer } from './components/Timer.tsx';
+import { WorldClock } from './components/WorldClock.tsx';
+import { AiAssistant } from './components/AiAssistant.tsx';
+import { NAV_ITEMS } from './constants.tsx';
+import type { NavItemType } from './types.ts';
+import { ThemeToggle } from './components/ThemeToggle.tsx';
+import { PrivacyPolicyModal } from './components/PrivacyPolicy.tsx';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<NavItemType>('DigitalClock');

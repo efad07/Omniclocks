@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { ALARM_SOUNDS } from '../constants';
+import { ALARM_SOUNDS } from '../constants.tsx';
 
 const formatTime = (totalSeconds: number): string => {
   const hours = Math.floor(totalSeconds / 3600);

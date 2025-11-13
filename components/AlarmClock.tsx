@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import type { Alarm } from '../types';
-import { useTime } from '../hooks/useTime';
-import { ALARM_SOUNDS } from '../constants';
+import type { Alarm } from '../types.ts';
+import { useTime } from '../hooks/useTime.ts';
+import { ALARM_SOUNDS } from '../constants.tsx';
 
 const formatAlarmTime = (time24: string) => {
     const [hour, minute] = time24.split(':').map(Number);

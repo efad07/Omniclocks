@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { getAiResponse } from '../services/geminiService';
+import { getAiResponse } from '../services/geminiService.ts';
 
 interface Message {
   sender: 'user' | 'ai';

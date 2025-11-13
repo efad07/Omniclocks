@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTime } from '../hooks/useTime';
+import { useTime } from '../hooks/useTime.ts';
 
 const THEMES: Record<string, { name: string, className: string, previewClass: string }> = {
     rgb: { name: 'RGB Glow', className: 'text-rgb-glow', previewClass: 'bg-gradient-to-r from-pink-500 via-blue-500 to-green-500' },

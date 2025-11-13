@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import type { Lap } from '../types';
+import type { Lap } from '../types.ts';
 
 const formatTimeParts = (time: number) => {
     const minutes = Math.floor(time / 60000);

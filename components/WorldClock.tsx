@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { useTime } from '../hooks/useTime';
-import { INITIAL_WORLD_CITIES } from '../constants';
-import type { WorldClockCity } from '../types';
+import { useTime } from '../hooks/useTime.ts';
+import { INITIAL_WORLD_CITIES } from '../constants.tsx';
+import type { WorldClockCity } from '../types.ts';
 
 interface ClockDisplayProps {
   city: WorldClockCity;
