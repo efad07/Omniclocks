@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OmniClock AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --font-sans: 'Inter', sans-serif;
+      }
+      
+      html[data-theme='light'] {
+        --background: #E0E5EC;
+        --text-primary: #374151;
+        --text-secondary: #6B7280;
+        --accent: #F97316;
+        --accent-glow: rgba(249, 115, 22, 0.5);
+        --surface: #E0E5EC;
+        --shadow-light: #FFFFFF;
+        --shadow-dark: #A3B1C6;
+        --component-background: #E0E5EC;
+      }
+
+      html[data-theme='dark'] {
+        --background: #1E2025;
+        --text-primary: #E5E7EB;
+        --text-secondary: #9CA3AF;
+        --accent: #FB923C;
+        --accent-glow: rgba(251, 146, 60, 0.4);
+        --surface: #24272e;
+        --shadow-light: #2e3138;
+        --shadow-dark: #141518;
+        --component-background: #24272e;
+      }
+
+      html, body {
+        overscroll-behavior: none;
+        background-color: var(--background);
+        font-family: var(--font-sans);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease;
+      }
+      
+      /* --- Neumorphic System --- */
+      .neumorphic-flat {
+        background: var(--surface);
+        border-radius: 1.5rem;
+        box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+      }
+      
+      .neumorphic-inset {
+        background: var(--surface);
+        border-radius: 1rem;
+        box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+      }
+
+      /* --- New Button System --- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        border: none;
+        user-select: none;
+        color: var(--text-secondary);
+        background: var(--surface);
+        box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+      }
+      .btn:hover {
+        color: var(--accent);
+      }
+      .btn:active {
+        box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+        transform: scale(0.98);
+        color: var(--accent);
+      }
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+        font-weight: 700;
+        box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light), 0px 0px 20px var(--accent-glow);
+      }
+      .btn-primary:hover {
+         filter: brightness(1.1);
+         color: white;
+      }
+      .btn-primary:active {
+        box-shadow: inset 4px 4px 8px rgba(0,0,0,0.2);
+        filter: brightness(0.95);
+      }
+      
+      .btn-control {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 9999px;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+      .btn-success { color: #22c55e; }
+      .btn-danger { color: #ef4444; }
+      .btn-success:hover, .btn-danger:hover { color: var(--accent); }
+
+      .btn-icon {
+          width: 2.5rem;
+          height: 2.5rem;
+          padding: 0.5rem;
+          border-radius: 9999px;
+      }
+
+      .toggle-switch {
+        width: 56px;
+        height: 32px;
+        border-radius: 9999px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+      }
+      .toggle-switch::after {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 24px;
+        height: 24px;
+        border-radius: 9999px;
+        background: var(--surface);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
+      }
+      input:checked + .toggle-switch {
+        background-color: var(--accent);
+      }
+      input:checked + .toggle-switch::after {
+        transform: translateX(24px);
+        background-color: #fff;
+        box-shadow: none;
+      }
+
+      .form-input {
+        background: var(--component-background);
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        color: var(--text-primary);
+        width: 100%;
+        box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+      }
+      .form-input::placeholder { color: var(--text-secondary); }
+      .form-input:focus {
+        outline: none;
+        box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light), 0 0 0 2px var(--accent);
+      }
+      
+      .form-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+      
+      .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--shadow-dark); border-radius: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+      /* --- Text Glow Effects --- */
+      @keyframes rgb-glow {
+        0% { text-shadow: 0 0 10px #ff00de, 0 0 20px #ff00de, 0 0 30px #ff00de; }
+        25% { text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f; }
+        50% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; }
+        75% { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0; }
+        100% { text-shadow: 0 0 10px #ff00de, 0 0 20px #ff00de, 0 0 30px #ff00de; }
+      }
+      .text-rgb-glow {
+        animation: rgb-glow 5s linear infinite;
+      }
+      .text-glow-cyber-pink { color: #f472b6; text-shadow: 0 0 12px #f472b6; }
+      .text-glow-electric-blue { color: #60a5fa; text-shadow: 0 0 12px #60a5fa; }
+      .text-glow-lime-green { color: #84cc16; text-shadow: 0 0 12px #84cc16; }
+      .text-glow-solar-orange { color: #fb923c; text-shadow: 0 0 12px #fb923c; }
+
+    </style>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="react,typescript" data-type="module" src="/index.tsx"></script>
+  </body>
+</html>

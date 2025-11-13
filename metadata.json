@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Omiclock",
+  "description": "A versatile, full-screen digital watch application featuring a giant clock, stopwatch with lap timer, multi-set alarm clock, countdown timer, and a world clock. It also includes an AI assistant powered by Gemini for quick time-related queries.",
+  "requestFramePermissions": []
+}
